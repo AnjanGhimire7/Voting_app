@@ -1,0 +1,9 @@
+MONGOD_DB_URI=<your mongodb url>
+PORT=4000
+CORS_ORIGIN=*
+CLOUDINARY_CLOUD_NAME=<your cloud name>
+CLOUDINARY_API_KEY=<your api key>
+CLOUDINARY_API_SECRET=<your api secret>
+ACCESS_TOKEN_SECRET=4484830fhsdfjsds
+
+ACCESS_TOKEN_EXPIRY=20min
