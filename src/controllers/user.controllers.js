@@ -19,9 +19,9 @@ const generatedAccessToken = async (userId) => {
 };
 
 const userRegister = asyncHandler(async (req, res) => {
-  const { fullName, email, password, mobileNumber, age, role } = req.body;
+  const { fullName, email, password, mobileNumber, age, role,citizenshipID } = req.body;
   //Checking that the all the fileds are empty or not
-  if ([fullName, email, password].every((field) => field?.trim() === "")) {
+  if ([fullName, email, password,citizenshipID].every((field) => field?.trim() === "")) {
     throw new ApiError(403, "All the field are required!!!");
   }
   //checking whether user with the email exist or not!!!
@@ -52,7 +52,9 @@ const userRegister = asyncHandler(async (req, res) => {
     citizenship: citizenship?.url,
     mobileNumber,
     age,
-    role,
+    citizenshipID,
+    role
+    
   });
 
   const createdUser = await User.findById(user._id).select("-password ");
@@ -64,9 +66,9 @@ const userRegister = asyncHandler(async (req, res) => {
 });
 
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
-  if (!email) {
-    throw new ApiError(403, "Email is required !!!");
+  const { email, password ,candidateID} = req.body;
+  if (!(candidateID&&email)) {
+    throw new ApiError(403, "Email and candidateId is required !!!");
   }
   const user = await User.findOne({
     email,

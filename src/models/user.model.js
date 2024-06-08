@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    citizenshipID :{
+      type: String,
+      required:true
+    },
     role: {
       type: String,
       enum: ["Voter", "Admin"],

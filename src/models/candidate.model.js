@@ -18,6 +18,7 @@ const candidateSchema = new mongoose.Schema(
       type: String, ///cloudinary url
       required: true,
     },
+  
     votes: [
       {
         user: {
